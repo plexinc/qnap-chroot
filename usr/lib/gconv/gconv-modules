@@ -1,0 +1,47 @@
+alias   BIG-FIVE//              BIG5//
+alias   BIGFIVE//               BIG5//
+alias   BIG-5//                 BIG5//
+alias   CN-BIG5//               BIG5//
+alias   CP950//                 BIG5//
+module  BIG5//                  INTERNAL                BIG5            1
+module  INTERNAL                BIG5//                  BIG5            1
+alias   BIG5-HKSCS//            BIG5HKSCS//
+module  BIG5HKSCS//             INTERNAL                BIG5HKSCS       1
+module  INTERNAL                BIG5HKSCS//             BIG5HKSCS       1
+module  EUC-CN//                BIG5//                  GBBIG5          1
+module  BIG5//                  EUC-CN//                GBBIG5          1
+
+alias	WINDOWS-31J//		CP932//
+alias	MS932//			CP932//
+alias	SJIS-OPEN//		CP932//
+alias	SJIS-WIN//		CP932//
+alias	CSWINDOWS31J//		CP932//
+module	CP932//			INTERNAL		CP932		1
+module	INTERNAL		CP932//			CP932		1
+
+alias   GB13000//               GBK//
+alias   CP936//                 GBK//
+alias   MS936//                 GBK//
+alias   WINDOWS-936//           GBK//
+module  GBK//                   INTERNAL                GBK             1
+module  INTERNAL                GBK//                   GBK             1
+module  GBK//                   EUC-CN//                GBGBK           1
+module  EUC-CN//                GBK//                   GBGBK           1
+
+alias	MSCP949//		UHC//
+alias	CP949//			UHC//
+alias   OSF100203B5//           UHC//
+module  UHC//                   INTERNAL                UHC             1
+module  INTERNAL                UHC//                   UHC             1
+
+alias   ISO8859-1//             ISO-8859-1//
+module  ISO-8859-1//            INTERNAL                ISO8859-1       1
+module  INTERNAL                ISO-8859-1//            ISO8859-1       1
+
+alias   ISO8859-2//             ISO-8859-2//
+module  ISO-8859-2//            INTERNAL                ISO8859-2       1
+module  INTERNAL                ISO-8859-2//            ISO8859-2       1
+
+alias   ISO8859-7//             ISO-8859-7//
+module  ISO-8859-7//            INTERNAL                ISO8859-7       1
+module  INTERNAL                ISO-8859-7//            ISO8859-7       1
