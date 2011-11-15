@@ -1,6 +1,6 @@
 #!/bin/sh
 CONF=/etc/config/qpkg.conf
-QPKG_NAME="Plex"
+QPKG_NAME="PlexMediaServer"
 PUBLIC_SHARE=`/sbin/getcfg SHARE_DEF defPublic -d Public -f /etc/config/def_share.info`
 
 # Determine BASE installation location according to smb.conf
@@ -23,11 +23,11 @@ if [ -z $BASE ]; then
 fi
 if [ -z $BASE ] ; then
 	echo "The Public share not found."
-	/sbin/write_log "[Plex] The Public share not found." 1
+	/sbin/write_log "[Plex Media Server] The Public share not found." 1
 	exit 1
 fi
 		
-	QPKG_DIR=${BASE}/.qpkg/Plex
+	QPKG_DIR=${BASE}/.qpkg/$QPKG_NAME
 
 case "$1" in
   start)
@@ -38,7 +38,7 @@ case "$1" in
     fi
 	
 	if [ -f ${QPKG_DIR}/lock ]; then
-		echo "Plex is currently running or hasn't been shutdown properly. Please stop it before starting a new instance."
+		echo "Plex Media Server is currently running or hasn't been shutdown properly. Please stop it before starting a new instance."
 		exit 0
 	fi
 	
@@ -65,7 +65,7 @@ case "$1" in
   stop)
 
 	if [ ! -f ${QPKG_DIR}/lock ]; then
-		echo "Plex hasn't been enabled or started ..."
+		echo "Plex Media Server hasn't been enabled or started ..."
 		exit 0
 	fi
 	PLEX_PID=`${QPKG_DIR}/bin/pgrep Plex\ Media`
