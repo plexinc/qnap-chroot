@@ -135,6 +135,13 @@
 #
 pkg_post_install(){
 
+if [ -d ${SYS_QPKG_INSTALL_PATH}/Plex ]; then
+  $CMD_RM -rf ${SYS_QPKG_DIR}/Library
+  $CMD_CP -r ${SYS_QPKG_INSTALL_PATH}/Plex/Library ${SYS_QPKG_DIR}/Library
+  # removing the previous QPKG
+  ${SYS_QPKG_INSTALL_PATH}/Plex/.uninstall.sh
+fi
+
 SYS_QPKG_SERVICE_ENABLED="TRUE"
 
 }
