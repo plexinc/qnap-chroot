@@ -135,11 +135,16 @@
 #
 pkg_post_install(){
 
-if [ -d ${SYS_QPKG_INSTALL_PATH}/Plex ]; then
-  $CMD_RM -rf ${SYS_QPKG_DIR}/Library
-  $CMD_CP -r ${SYS_QPKG_INSTALL_PATH}/Plex/Library ${SYS_QPKG_DIR}/Library
-  # removing the previous QPKG
-  ${SYS_QPKG_INSTALL_PATH}/Plex/.uninstall.sh
+if [ -d ${SYS_QPKG_INSTALL_PATH}/Plex -a ! -f ${SYS_QPKG_INSTALL_PATH}/Plex/Library/.migrated ]; then
+	$CMD_RM -rf ${SYS_QPKG_DIR}/Library
+	$CMD_CP -r ${SYS_QPKG_INSTALL_PATH}/Plex/Library ${SYS_QPKG_DIR}/Library
+	# stop the previous QPKG
+	${SYS_QPKG_INSTALL_PATH}/Plex/plex.sh stop
+	$CMD_SLEEP 3
+	# disable it so it won't start at next boot
+	$CMD_SETCFG Plex Enable FALSE -f /etc/config/qpkg.conf
+	# we have successfully migrated
+	touch ${SYS_QPKG_INSTALL_PATH}/Plex/Library/.migrated
 fi
 
 SYS_QPKG_SERVICE_ENABLED="TRUE"
