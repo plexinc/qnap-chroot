@@ -73,17 +73,11 @@ case "$1" in
 		echo "Plex Media Server might not be running."
 	else 
 		echo "Stopping Plex Media Server ..."
-		kill -9 $PLEX_PID
+		kill $PLEX_PID
 	fi
 	
 	/bin/rm -f ${QPKG_DIR}/lock
-	
-	PLEX_PLUGINS_PIDS=`/bin/ps | /bin/grep "Plex Plug-in" | /bin/grep -v grep | /bin/awk '{print $1}'`
-	for i in $PLEX_PLUGINS_PIDS
-		do
-			kill -9 $i > /dev/null 2>1&
-		done
-	
+
 	echo "Removing Library link ..."
 	/bin/rm -rf /root/Library
 	/bin/rm -rf /root/.plex
